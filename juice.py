@@ -17,11 +17,6 @@ def FindWindow(chatroom):
     else:
         print('找不到该窗口，请双击联系人，保证其是一个单独的窗口' % chatroom)
         # exit()
-# def CloseWindow(chatroom):
-#     win = win32gui.FindWindow(None, chatroom)
-#     #print("找到关闭窗口：%x" % win)
-#     time.sleep(3)
-#     win32gui.ShowWindow(win, win32con.SW_SHOWMINIMIZED)
 def setText(aString):
     w.OpenClipboard()
     w.EmptyClipboard()
