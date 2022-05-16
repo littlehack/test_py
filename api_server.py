@@ -2,10 +2,15 @@ from flask import Flask, make_response, request,session
 import time,os
 import uuid
 from juice import *
+from flask_basicauth import  BasicAuth
 app = Flask(__name__)
 
 
+app.config['BASIC_AUTH_USERNAME'] = "juice"
+app.config['BASIC_AUTH_PASSWORD'] = "123456"
 app.secret_key = "d6ab27dbb2e4490e845a0e1952ceac1f"
+
+basic_auth = BasicAuth(app)
 
 @app.route('/login' , methods = ['GET','POST'])
 
@@ -50,6 +55,7 @@ def checkLogin():
 #参数
 #@param uname pwd repwd
 @app.route('/register',methods = ['GET','POST'])
+# @basic_auth.required()
 
 def register():
     uname = request.form['uname']
@@ -174,7 +180,15 @@ def upload():
     }
     return data
 
-    
+#json格式传输文件，校验身份认真
+#@param signature、token
+
+@app.route("/app/verify")
+
+def check(privilege = ""):
+
+
+
 
 
 
